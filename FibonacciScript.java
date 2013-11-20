@@ -3,17 +3,26 @@ public class FibonacciScript {
 	
 	public void launch(int n) {
 		// this script will test fibonacci calculator with and without memo-ization
+		
+		this.doOrdinaryFib(n);
+		this.doDynoFib(n);
+		
+	}
+
+	public void doDynoFib(int n) {
+		long startTime = System.currentTimeMillis();
+		int result = dynoFib(n);
+		long endTime = System.currentTimeMillis();
+		System.out.println("dynoFib(" + n + ")=" + result + " took " + (endTime - startTime) + " milliseconds to calculate");
+	}
+	
+	public void doOrdinaryFib(int n) {
 		long startTime = System.currentTimeMillis();
 		int result = fib(n);
 		long endTime = System.currentTimeMillis();
 		System.out.println("fib(" + n + ")=" + result + " took " + (endTime - startTime) + " milliseconds to calculate");
-		
-		startTime = System.currentTimeMillis();
-		result = dynoFib(n);
-		endTime = System.currentTimeMillis();
-		System.out.println("dynoFib(" + n + ")=" + result + " took " + (endTime - startTime) + " milliseconds to calculate");
 	}
-
+	
 	public static void main(String[] args) {
 		FibonacciScript myScript = new FibonacciScript();
 		if (args.length>0) {

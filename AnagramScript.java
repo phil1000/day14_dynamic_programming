@@ -6,21 +6,20 @@ public class AnagramScript {
 	ArrayList<String> anagramList = new ArrayList<String>();
 	
 	public void launch(String inStr) {
-		
+		//first generate and print palindromes for the incoming string
 		palindromeList=getPalindromes(inStr);
-		
-		for (int i=0; i<palindromeList.size();i++) {
-			System.out.println(palindromeList.get(i));
-		}
-		
+		printList(palindromeList);
+		//now generate and print all anagrams (assume all letters have to be used, otherwise could also invoke the palindrome creator)
 		anagramList=getAnagrams(inStr);
-		
-		for (int i=0; i<anagramList.size();i++) {
-			System.out.println(anagramList.get(i));
-		}
-		
+		printList(anagramList);
 	}
 
+	public void printList(ArrayList<String> list) {
+		for (int i=0; i<list.size();i++) {
+			System.out.println(list.get(i));
+		}
+	}
+	
 	public ArrayList<String> getAnagrams(String inStr) {
 		
 		if (inStr.length()==1)	{
@@ -42,7 +41,7 @@ public class AnagramScript {
 		} else {
 			palindromeList.add(inStr);
 			getPalindromes(inStr.substring(1));
-			palindromeList.add(inStr);
+			palindromeList.add(inStr); // would exclude this line if a pyramid of palindromes was not required
 			return palindromeList;
 		}
 	}
